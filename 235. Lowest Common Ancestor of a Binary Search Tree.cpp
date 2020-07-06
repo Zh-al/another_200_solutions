@@ -17,8 +17,7 @@ public:
             int rootVal = root->val;
             if (rootVal < pVal && rootVal < qVal) {
                 root = root->right;
-            }
-            if (rootVal > qVal && rootVal > pVal) {
+            } else if (rootVal > pVal && rootVal > qVal) {
                 root = root->left;
             } else {    
                 return root;                
