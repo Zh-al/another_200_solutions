@@ -6,6 +6,7 @@ public:
         }
         int past = nums[nums[0] - 1];
         // Amortized O(n) - each element swap at most 2 times
+        // O(1) - extra space
         for (int i = 0; i < nums.size(); ++i) {
             while (nums[i] != past && nums[i] != i + 1) {
                 past = nums[i];
