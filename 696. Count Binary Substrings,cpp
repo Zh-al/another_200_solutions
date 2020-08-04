@@ -1,0 +1,35 @@
+//https://leetcode.com/problems/count-binary-substrings/
+
+class Solution {
+public:
+    int countBinarySubstrings(string s) {
+        int countZeros = 0, countOnes = 0;
+        int result = 0;
+        bool change = false;
+        if (s[0] == '0') ++countZeros;
+        else ++countOnes;
+        s.push_back('#');
+        for (int i = 1; i < s.size(); ++i) {
+            if (s[i] != s[i - 1]) {
+                result += min(countZeros, countOnes);
+                change = true;
+            }
+            if (s[i] == '0') {
+                if (change) {
+                    countZeros = 1;
+                    change = false;
+                } else {
+                    ++countZeros;
+                }
+            } else {
+                if (change) {
+                    countOnes = 1;
+                    change = false;
+                } else {
+                    ++countOnes;   
+                }
+            }
+        }
+        return result;
+    }
+};
